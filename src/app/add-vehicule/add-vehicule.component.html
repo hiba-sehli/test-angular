@@ -1,0 +1,34 @@
+<h2>Ajouter un véhicule</h2>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <label>Matricule:</label>
+  <input type="text" formControlName="matricule" />
+  <div *ngIf="form.get('matricule')?.invalid && form.get('matricule')?.touched">
+    <div *ngIf="form.get('matricule')?.errors?.['required']">Matricule est requis.</div>
+    <div *ngIf="form.get('matricule')?.errors?.['pattern']">La matricule doit commencer par une lettre majuscule.</div>
+  </div>
+
+  <label>Description:</label>
+  <input type="text" formControlName="description" />
+  <div *ngIf="form.get('description')?.invalid && form.get('description')?.touched">
+    <div *ngIf="form.get('description')?.errors?.['required']">Description est requise.</div>
+    <div *ngIf="form.get('description')?.errors?.['minlength']">Description doit contenir au moins 3 caractères.</div>
+  </div>
+
+  <label>Marque:</label>
+  <input type="text" formControlName="marque" />
+  <div *ngIf="form.get('marque')?.invalid && form.get('marque')?.touched">
+    <div *ngIf="form.get('marque')?.errors?.['required']">Marque est requise.</div>
+    <div *ngIf="form.get('marque')?.errors?.['pattern']">La marque doit commencer par une lettre majuscule.</div>
+  </div>
+
+  <label>Disponible:</label>
+  <input type="checkbox" formControlName="disponible" />
+
+  <label>Nombre d'intéressés:</label>
+  <input type="number" formControlName="nbrinteresse" />
+  <div *ngIf="form.get('nbrinteresse')?.invalid && form.get('nbrinteresse')?.touched">
+    <div *ngIf="form.get('nbrinteresse')?.errors?.['min']">Le nombre d'intéressés ne peut pas être négatif.</div>
+  </div>
+
+  <button type="submit" [disabled]="form.invalid">Ajouter</button>
+</form>

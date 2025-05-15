@@ -1,0 +1,36 @@
+{
+  "vehicules": [
+    {
+      "id": "eb0d",
+      "matricule": "ABC",
+      "description": "hiba",
+      "marque": "Toyota",
+      "disponible": true,
+      "nbrinteresse": 5
+    },
+    {
+      "id": "e485",
+      "matricule": "MBR",
+      "description": "bonneEtat",
+      "marque": "Mg",
+      "disponible": true,
+      "nbrinteresse": 8
+    },
+    {
+      "id": "6be3",
+      "matricule": "ACB",
+      "description": "new",
+      "marque": "Toyota",
+      "disponible": true,
+      "nbrinteresse": 7
+    },
+    {
+      "id": "425b",
+      "matricule": "MB",
+      "description": "Bonne ETAT",
+      "marque": "Mg",
+      "disponible": true,
+      "nbrinteresse": 7
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+<h2>Liste des véhicules</h2>
+<div *ngIf="isLoading">
+  <p>Chargement des véhicules...</p>
+</div>
+<div *ngIf="errorMessage && !isLoading">
+  <p style="color: red;">{{ errorMessage }}</p>
+</div>
+<div *ngIf="!selectedVehicule && !isLoading && !errorMessage; else details">
+  <ul>
+    <li *ngFor="let vehicule of vehicules">
+      {{ vehicule.Matricule }} - {{ vehicule.Descreption }} - {{ vehicule.Marque }}
+      <button (click)="viewDetails(vehicule.id)">Détails</button>
+      <button (click)="deleteVehicule(vehicule.id)">Supprimer</button>
+    </li>
+  </ul>
+  <div *ngIf="vehicules.length === 0">
+    <p>Aucun véhicule trouvé.</p>
+  </div>
+</div>
+
+<ng-template #details>
+  <h2>Détails du véhicule</h2>
+  <div *ngIf="selectedVehicule; else notFound">
+    <p><strong>Matricule:</strong> {{ selectedVehicule.Matricule }}</p>
+    <p><strong>Description:</strong> {{ selectedVehicule.Descreption }}</p>
+    <p><strong>Marque:</strong> {{ selectedVehicule.Marque }}</p>
+    <p><strong>Disponible:</strong> {{ selectedVehicule.Disponible ? 'Oui' : 'Non' }}</p>
+    <p><strong>Nombre d'intéressés:</strong> {{ selectedVehicule.nbrinteresse }}</p>
+    <button (click)="goBackToList()">Retour</button>
+  </div>
+  <ng-template #notFound>
+    <p>Véhicule non trouvé.</p>
+  </ng-template>
+</ng-template>
